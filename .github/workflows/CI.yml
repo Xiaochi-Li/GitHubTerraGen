@@ -15,9 +15,13 @@ jobs:
       uses: hashicorp/setup-terraform@v3
 
     - name: Terraform Initialization
-      run: terraform init
+      run: |
+        cd environments/prod
+        terraform init
 
     - name: Terraform Plan
-      run: terraform plan
+      run: |
+        cd environments/prod
+        terraform plan
       env:
         TF_VAR_github_token: ${{ secrets.TF_VAR_GITHUB_PAT }}
