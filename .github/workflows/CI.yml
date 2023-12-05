@@ -1,5 +1,6 @@
 name: Terraform Plan on Pull Request
 
+
 on:
   pull_request:
     branches: [ "main" ]
@@ -7,6 +8,12 @@ on:
 jobs:
   terraform-plan:
     runs-on: ubuntu-latest
+    environment: production
+    env:
+      TF_VAR_github_token: ${{ secrets.TF_VAR_GITHUB_PAT}}
+    defaults:
+      run:
+        working-directory: ./environments/prod
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -18,12 +25,16 @@ jobs:
 
     - name: Terraform Initialization
       run: |
-        cd environments/prod
         terraform init
+
+    - name: print current directory
+      run: |
+        ls ../../modules
+
+    - name: Terraform Validate
+      run: |
+        terraform validate
 
     - name: Terraform Plan
       run: |
-        cd environments/prod
         terraform plan
-      env:
-        TF_VAR_github_token: ${{ env.TF_VAR_github_token }}
