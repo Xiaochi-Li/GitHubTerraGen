@@ -13,6 +13,8 @@ jobs:
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
+      with:
+        cli_config_credentials_token: ${{ secrets.TV_VAR_GITHUBRTERRAGEN_TF_CLOUD_TOKEN }}
 
     - name: Terraform Initialization
       run: |
