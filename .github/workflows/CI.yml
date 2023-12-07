@@ -12,6 +12,8 @@ jobs:
   terraform-plan:
     runs-on: ubuntu-latest
     environment: production
+    env:
+      TF_VAR_github_token: ${{ secrets.TF_VAR_GITHUB_PAT}}
     defaults:
       run:
         working-directory: ./environments/prod
@@ -23,7 +25,6 @@ jobs:
       uses: hashicorp/setup-terraform@v3
       with:
         cli_config_credentials_token: ${{ secrets.GITHUBRTERRAGEN_TF_CLOUD_TOKEN }}
-
 
     - name: Terraform Initialization
       run: |
