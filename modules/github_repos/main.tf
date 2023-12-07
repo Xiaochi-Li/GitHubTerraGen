@@ -1,6 +1,6 @@
 resource "github_repository" "example" {
-  name        = "test"
-  description = "My awesome codebase"
+  name        = var.name
+  description = var.description
 
-  visibility = "public"
+  visibility = var.visibility
 } 

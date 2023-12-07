@@ -1,0 +1,17 @@
+[
+  {
+    "name": "repo1",
+    "description": "This is repo1",
+    "visibility": "public"
+  },
+  {
+    "name": "repo2",
+    "description": "This is repo2",
+    "visibility": "private"
+  },
+  {
+    "name": "repo3",
+    "description": "This is repo3",
+    "visibility": "public"
+  }
+]
