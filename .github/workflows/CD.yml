@@ -1,6 +1,5 @@
 name: Terraform Apply on Merge to Main
 
-
 on:
   push:
     branches:
@@ -27,14 +26,18 @@ jobs:
       with:
         cli_config_credentials_token: ${{ secrets.GITHUBRTERRAGEN_TF_CLOUD_TOKEN }}
 
-
     - name: Terraform Initialization
       run: |
         terraform init
 
+    - name: Terraform Validate
+      run: |
+        terraform validate
+
     - name: Terraform Plan
       run: |
         terraform plan
+
 
     - name: Terraform Apply
       run: |
