@@ -1,4 +1,4 @@
-resource "github_repository" "example" {
+resource "github_repository" "repo" {
   name        = var.name
   description = var.description
 
