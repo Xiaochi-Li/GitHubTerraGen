@@ -7,7 +7,7 @@
   {
     "name": "repo2",
     "description": "This is repo2",
-    "visibility": "private"
+    "visibility": "public"
   },
   {
     "name": "repo3",
