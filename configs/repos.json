@@ -1,17 +1,7 @@
 [
   {
-    "name": "repo1",
-    "description": "This is repo1",
-    "visibility": "public"
-  },
-  {
-    "name": "repo2",
-    "description": "This is repo2",
-    "visibility": "public"
-  },
-  {
-    "name": "repo3",
-    "description": "This is repo3",
+    "name": "oz-fire-calculator",
+    "description": "This is oz-fire-calculator",
     "visibility": "public"
   }
 ]
