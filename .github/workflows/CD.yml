@@ -14,6 +14,9 @@ jobs:
     environment: production
     env: 
       TF_VAR_github_token: ${{ secrets.GH_AUTH_TOKEN}}
+      TF_VAR_AWS_ACCOUNT_ID_DEVELOPMENT: ${{ secrets.TF_VAR_AWS_ACCOUNT_ID_DEVELOPMENT }}
+      TF_VAR_AWS_ACCOUNT_ID_PRODUCTION: ${{ secrets.TF_VAR_AWS_ACCOUNT_ID_PRODUCTION }}
+      TF_VAR_AWS_ACCOUNT_ID_GENERAL: ${{ secrets.TF_VAR_AWS_ACCOUNT_ID_GENERAL }}
     defaults:
       run:
         working-directory: ./environments/prod
