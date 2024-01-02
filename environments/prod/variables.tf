@@ -4,22 +4,15 @@ variable "github_token" {
   type        = string
 }
 
-variable "aws_account_id_general" {
-  description = "value of the general AWS account id"
-  type        = string
+variable "aws_account" {
+  description = "value of the AWS account"
   sensitive   = true
+  type        = string
 }
 
-variable "aws_account_id_development" {
-  description = "value of the development AWS account id"
+variable "env" {
+  description = "value of the environment"
   type        = string
-  sensitive   = true
-}
-
-variable "aws_account_id_production" {
-  description = "value of the production AWS account id"
-  type        = string
-  sensitive   = false
 }
 
 variable "repositories" {
