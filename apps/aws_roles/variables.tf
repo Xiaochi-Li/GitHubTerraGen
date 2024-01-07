@@ -1,17 +1,6 @@
-variable "github_token" {
-  description = "value of the GitHub token"
-  sensitive   = true
-  type        = string
-}
-
 variable "aws_account" {
   description = "value of the AWS account"
   sensitive   = true
-  type        = string
-}
-
-variable "env" {
-  description = "value of the environment"
   type        = string
 }
 
