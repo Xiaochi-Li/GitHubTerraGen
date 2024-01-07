@@ -2,7 +2,7 @@ terraform {
   cloud {
     organization = "sean-li-terraform-cloud-learning"
     workspaces {
-      name = "GitHubTerraGen_Prod"
+      name = "GitHubTerraGen_github_repositories"
     }
   }
 
