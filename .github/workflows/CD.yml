@@ -4,56 +4,69 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 concurrency:
   group: terraform-run
 
 jobs:
-  terraform-plan:
+  deploy-aws-roles:
     runs-on: ubuntu-latest
     permissions:
       id-token: write # This is required for requesting the JWT
-      contents: read  # This is required for actions/checkout    
+      contents: read  # This is required for actions/checkout
     strategy:
       matrix:
         environment: [ development, general, production ]
     environment: ${{ matrix.environment }}
     env: 
-      TF_VAR_github_token: ${{ secrets.GH_AUTH_TOKEN}}
       TF_VAR_aws_account_id: ${{ secrets.TF_VAR_AWS_ACCOUNT_ID}}
       TF_VAR_envrionment: ${{ matrix.environment }}
-    defaults:
+    defaults: 
       run:
-        working-directory: ./environments/prod
+        working-directory: ./environments/aws_roles
 
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-
+    
     - name: Authenticate with AWS
       uses: aws-actions/configure-aws-credentials@v3
       with: 
         aws-region: us-east-1
         role-to-assume: arn:aws:iam::${{ env.TF_VAR_aws_account_id }}:role/GitHubTerraGen
 
-    # - name: Set up Terraform
-    #   uses: hashicorp/setup-terraform@v3
-    #   with:
-    #     cli_config_credentials_token: ${{ secrets.GITHUBRTERRAGEN_TF_CLOUD_TOKEN }}
+  deploy-repositories:
+    runs-on: ubuntu-latest
+    env: 
+      TF_VAR_github_token: ${{ secrets.GH_AUTH_TOKEN}}
+    defaults:
+      run:
+        working-directory: ./environments/github_repositories
 
-    # - name: Terraform Initialization
-    #   run: |
-    #     terraform init
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
 
-    # - name: Terraform Validate
-    #   run: |
-    #     terraform validate
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        cli_config_credentials_token: ${{ secrets.GITHUBRTERRAGEN_TF_CLOUD_TOKEN }}
 
-    # - name: Terraform Plan
-    #   run: |
-    #     terraform plan -var-file="repocitories.tfvars"   
+    - name: Terraform Initialization
+      run: |
+        terraform init
 
+    - name: Terraform Validate
+      run: |
+        terraform validate
 
-    # - name: Terraform Apply
-    #   run: |
-    #     terraform apply -auto-approve -var-file="repocitories.tfvars" 
+    - name: Terraform Plan
+      run: |
+        terraform plan   
+
+    - name: Terraform Apply
+      run: |
+        terraform apply -auto-approve
