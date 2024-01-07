@@ -16,7 +16,7 @@ terraform {
 
 locals {
   flattened_roles = flatten([
-    for repo in jsondecode(file("../../configs/repositories.json")) : [
+    for repo in jsondecode(file("../../configs/repositories.json")).repositories : [
       for role in repo.roles : {
         repo_name        = repo.repo_name
         aws_account      = role.aws_account

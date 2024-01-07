@@ -4,10 +4,10 @@ variable "github_token" {
   type        = string
 }
 
-variable "env" {
-  description = "value of the environment"
-  type        = string
-}
+# variable "env" {
+#   description = "value of the environment"
+#   type        = string
+# }
 
 # variable "repositories" {
 #   description = "configuration for the repositories"

@@ -26,7 +26,7 @@ jobs:
       TF_VAR_envrionment: ${{ matrix.environment }}
     defaults: 
       run:
-        working-directory: ./environments/aws_roles
+        working-directory: /apps/aws_roles
 
     steps:
     - name: Checkout
@@ -44,7 +44,7 @@ jobs:
       TF_VAR_github_token: ${{ secrets.GH_AUTH_TOKEN}}
     defaults:
       run:
-        working-directory: ./environments/github_repositories
+        working-directory: apps/github_repositories
 
     steps:
     - name: Checkout
@@ -54,6 +54,11 @@ jobs:
       uses: hashicorp/setup-terraform@v3
       with:
         cli_config_credentials_token: ${{ secrets.GITHUBRTERRAGEN_TF_CLOUD_TOKEN }}
+
+    - name: print folder structure
+      run: |
+        pwd
+        ls -la
 
     - name: Terraform Initialization
       run: |
