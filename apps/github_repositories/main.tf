@@ -15,7 +15,7 @@ terraform {
 }
 
 locals {
-  repositories = jsondecode(file("../../configs/repositories.json"))
+  repositories = jsondecode(file("../../configs/repositories.json")).repositories
 }
 
 ## creating a repository for each config object in the repos list
