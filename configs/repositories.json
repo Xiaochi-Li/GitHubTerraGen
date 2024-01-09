@@ -1,8 +1,8 @@
 {
   "repositories": [
     {
-      "repo_name": "oz-fire-calculator",
-      "description": "This is oz-fire-calculator",
+      "repo_name": "test-repo",
+      "description": "This is a test repo",
       "visibility": "public",
       "roles": [
         {
