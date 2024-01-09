@@ -1,6 +1,6 @@
 repositories = [
   {
-    "repo_name" : "oz-fire-calculator",
+    "repo_name" : "oz-fire-calculator-test",
     "description" : "This is oz-fire-calculator",
     "visibility" : "public",
     "roles" : [
