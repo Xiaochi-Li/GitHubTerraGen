@@ -28,7 +28,7 @@ locals {
 
 module "iam_roles" {
   source = "../../modules/iam_role"
-  count  = length([for role in locals.flattened_roles : role])
+  count  = length([for role in local.flattened_roles : role if role.aws_account == var.aws_account])
 
   repo_name        = local.flattened_roles[count.index].repo_name
   aws_account_id   = local.flattened_roles[count.index].aws_account

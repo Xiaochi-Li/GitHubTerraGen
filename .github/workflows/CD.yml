@@ -23,10 +23,10 @@ jobs:
     environment: ${{ matrix.environment }}
     env: 
       TF_VAR_aws_account_id: ${{ secrets.TF_VAR_AWS_ACCOUNT_ID}}
-      TF_VAR_envrionment: ${{ matrix.environment }}
+      TF_VAR_aws_account: ${{ matrix.environment }}
     defaults: 
       run:
-        working-directory: /apps/aws_roles
+        working-directory: apps/aws_roles
 
     steps:
     - name: Checkout
@@ -37,6 +37,27 @@ jobs:
       with: 
         aws-region: us-east-1
         role-to-assume: arn:aws:iam::${{ env.TF_VAR_aws_account_id }}:role/GitHubTerraGen
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        cli_config_credentials_token: ${{ secrets.GITHUBRTERRAGEN_TF_CLOUD_TOKEN }}
+
+    - name: Terraform Initialization
+      run: |
+        terraform init
+
+    - name: Terraform Validate
+      run: |
+        terraform validate
+
+    - name: Terraform Plan
+      run: |
+        terraform plan
+
+    - name: Terraform Apply
+      run: |
+        terraform apply -auto-approve
 
   deploy-repositories:
     runs-on: ubuntu-latest
@@ -54,11 +75,6 @@ jobs:
       uses: hashicorp/setup-terraform@v3
       with:
         cli_config_credentials_token: ${{ secrets.GITHUBRTERRAGEN_TF_CLOUD_TOKEN }}
-
-    - name: print folder structure
-      run: |
-        pwd
-        ls -la
 
     - name: Terraform Initialization
       run: |
