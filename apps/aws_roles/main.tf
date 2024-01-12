@@ -2,7 +2,7 @@ terraform {
   cloud {
     organization = "sean-li-terraform-cloud-learning"
     workspaces {
-      name = "GitHubTerraGen_aws_roles"
+      name = "GitHubTerraGen_aws_roles_${var.aws_account}"
     }
   }
 
