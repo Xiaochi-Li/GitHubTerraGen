@@ -1,10 +1,21 @@
 # GitHubTerraGen
 
 ## Overview
-GitHubTerraGen is a Terraform-based tool designed to automate the management of personal GitHub repositories. It efficiently handles the creation, configuration, and archiving of repositories, along with provisioning the necessary IAM roles and permissions for each repository.
+
+GitHubTerraGen is a tool powered by Terraform, designed to automate the management of personal GitHub repositories. It simplifies the process of creating, configuring, and archiving repositories, while also provisioning the necessary IAM roles and permissions for each repository.
 
 ## Key Features
-- **Automated Repository Management:** Streamlines the creation and configuration of GitHub repositories.
-- **IAM Role and Permission Provisioning:** Automatically sets up the appropriate IAM roles and permissions for each repository.
-- **Repository Archiving:** Easy archiving of repositories as per defined criteria.
-- **Infrastructure as Code:** Leverages Terraform for reliable and repeatable setups.
+
+- **Automated Repository Management:** GitHubTerraGen streamlines the process of creating and configuring GitHub repositories, making repository management more efficient.
+
+- **IAM Role and Permission Provisioning:** GitHubTerraGen automatically sets up appropriate IAM roles and permissions for each repository.
+  - **Security:** Each IAM role can only be assumed by its corresponding repository via OIDC. Furthermore, for roles created in different environments (AWS accounts), the environment must match to successfully assume the role. Developers can also configure minimum permission rules for those roles, enhancing security.
+  - **Flexibility:** GitHubTerraGen provides the flexibility to configure different permission rules for roles in different environments (AWS accounts), offering a flexible approach to permission configuration.
+
+- **Repository Archiving:** GitHubTerraGen simplifies the process of archiving repositories based on defined criteria.
+
+- **Infrastructure as Code:** GitHubTerraGen leverages the power of Terraform to provide reliable and repeatable setups.
+
+## How to use
+
+to be add later..
