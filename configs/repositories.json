@@ -1,7 +1,7 @@
 {
   "repositories": [
     {
-      "repo_name": "test-repo",
+      "repo_name": "go-expert-frontend-infra",
       "description": "This is a test repo",
       "visibility": "public",
       "roles": [
@@ -12,10 +12,6 @@
         {
           "aws_account": "development",
           "policy_file_path": "gen-developer-policy.json"
-        },
-        {
-          "aws_account": "production",
-          "policy_file_path": "gen-production-policy.json"
         }
       ]
     }
