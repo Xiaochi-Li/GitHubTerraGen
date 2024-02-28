@@ -18,14 +18,15 @@ locals {
         repo_name        = repo.repo_name
         aws_account      = role.aws_account
         policy_file_path = role.policy_file_path
-      }
+      } if role.aws_account == var.aws_account # Only include the roles for the current AWS account environment
     ]
   ])
 }
 
+
 module "iam_roles" {
   source = "../../modules/iam_role"
-  count  = length([for role in local.flattened_roles : role if role.aws_account == var.aws_account])
+  count  = length(local.flattened_roles)
 
   repo_name        = local.flattened_roles[count.index].repo_name
   aws_account_id   = local.flattened_roles[count.index].aws_account
