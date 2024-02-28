@@ -1,21 +1,6 @@
 {
   "repositories": [
     {
-      "repo_name": "go-expert-frontend-infra",
-      "description": "This is a test repo",
-      "visibility": "public",
-      "roles": [
-        {
-          "aws_account": "general",
-          "policy_file_path": "gen-admin-policy.json"
-        },
-        {
-          "aws_account": "development",
-          "policy_file_path": "gen-developer-policy.json"
-        }
-      ]
-    },
-    {
       "repo_name": "fire-calculator-api",
       "description": "This is the fire calculator API",
       "visibility": "public",
@@ -31,6 +16,25 @@
         {
           "aws_account": "production",
           "policy_file_path": "fire-calculator-api-prod.json"
+        }
+      ]
+    },
+    {
+      "repo_name": "fire-calculator-frontend",
+      "description": "This is the fire calculator frontend",
+      "visibility": "public",
+      "roles": [
+        {
+          "aws_account": "general",
+          "policy_file_path": "fire-calculator-frontend-gen.json"
+        },
+        {
+          "aws_account": "development",
+          "policy_file_path": "fire-calculator-frontend-dev.json"
+        },
+        {
+          "aws_account": "production",
+          "policy_file_path": "fire-calculator-frontend-prod.json"
         }
       ]
     }
